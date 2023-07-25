@@ -1,0 +1,13 @@
+﻿@model SearchingOMDB.Models.Movie
+
+@{
+    ViewData["Title"] = "MovieSearch";
+}
+
+<h1>MovieSearch</h1>
+
+<form asp-controller="Home" asp-action="Movie" method="post">
+    <label for="Id">Enter a title</label>
+    <input type="word" name="Title" />
+    <button type="submit">Search</button>
+</form>
