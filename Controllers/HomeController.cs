@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using SearchingOMDB.Models;
+using Flurl.Http;
 using System.Diagnostics;
 
 namespace SearchingOMDB.Controllers
@@ -7,6 +8,37 @@ namespace SearchingOMDB.Controllers
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;
+
+
+
+        [HttpGet]
+        public IActionResult MovieSearchForm() 
+        {
+            return View("MovieSearch"); 
+        }
+
+        [HttpPost]
+        public IActionResult MovieSearchResults(string Title)
+        {
+            string apiUrl = $"http://www.omdbapi.com/?t={Title}&apikey=5599940f";
+            var apiTask = apiUrl.GetJsonAsync<Movie>();
+            apiTask.Wait();
+            Movie result = apiTask.Result;
+
+
+            return View("MovieSearch", result);
+        }
+
+
+
+
+
+
+
+
+
+
+
 
         public HomeController(ILogger<HomeController> logger)
         {

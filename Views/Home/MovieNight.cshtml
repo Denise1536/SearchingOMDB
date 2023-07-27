@@ -2,14 +2,16 @@
 
 
 @{
-    ViewData["Title"] = "MovieSearch";
+    ViewData["Title"] = "MovieNight";
 }
 
-<h1>MovieSearch</h1>
+<h1>MovieNight</h1>
 
-<form asp-controller="Home" asp-action="MovieSearchResults" method="post">
-    <label for="Title">Enter a title</label>
-    <input type="text" name="Title" />
+<form asp-controller="Home" asp-action="MovieNightResults" method="post">
+    <label for="Title">Enter 3 titles</label>
+    <input type="text" name="Title1" />
+    <input type="text" name="Title2" />
+    <input type="text" name="Title3" />
     <button type="submit">Search</button>
 </form>
 
@@ -42,7 +44,8 @@
         </tr>
     </thead>
     <tbody>
-    
+@foreach (var item in Model)
+    {
         <tr>
                 <td>
                     @Html.DisplayFor(modelItem => Model.Title)
@@ -59,13 +62,11 @@
                 <td>
                     @Html.DisplayFor(modelItem => Model.Plot)
                 </td>
-
                 <td>
                     <img src="@Model.Poster" />
-
                 </td>
             </tr>
-        
+     }       
     </tbody>
 </table>
 
