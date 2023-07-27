@@ -29,13 +29,37 @@ namespace SearchingOMDB.Controllers
             return View("MovieSearch", result);
         }
 
+        [HttpGet]
+        public IActionResult MovieNightForm()
+        {
+            return View("MovieNight");
+        }
+
+        [HttpPost]
+        public IActionResult MovieNightResults(string Title1, string Title2, string Title3)
+        {
+            List<Movie> result = new List<Movie>();
+
+            string apiUrl = $"http://www.omdbapi.com/?t={Title1}&apikey=5599940f";
+            var apiTaskOne = apiUrl.GetJsonAsync<Movie>();
+            apiTaskOne.Wait();
+            result.Add(apiTaskOne.Result);
+
+            string apiUrlTwo = $"http://www.omdbapi.com/?t={Title2}&apikey=5599940f";
+            var apiTaskTwo = apiUrlTwo.GetJsonAsync<Movie>();
+            apiTaskTwo.Wait();
+            result.Add(apiTaskTwo.Result);
+
+            string apiUrlThree = $"http://www.omdbapi.com/?t={Title3}&apikey=5599940f";
+            var apiTaskThree = apiUrlThree.GetJsonAsync<Movie>();
+            apiTaskThree.Wait();
+            result.Add(apiTaskThree.Result);
+            
+            return View("MovieNight", result);
 
 
 
-
-
-
-
+        }
 
 
 

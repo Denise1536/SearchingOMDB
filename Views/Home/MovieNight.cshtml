@@ -1,4 +1,4 @@
-﻿@model SearchingOMDB.Models.Movie
+﻿@model IEnumerable<SearchingOMDB.Models.Movie>
 
 
 @{
@@ -48,22 +48,22 @@
     {
         <tr>
                 <td>
-                    @Html.DisplayFor(modelItem => Model.Title)
+                    @Html.DisplayFor(modelItem => item.Title)
                 </td>
                 <td>
-                    @Html.DisplayFor(modelItem => Model.Year)
+                    @Html.DisplayFor(modelItem => item.Year)
                 </td>
                 <td>
-                    @Html.DisplayFor(modelItem => Model.Rated)
+                    @Html.DisplayFor(modelItem => item.Rated)
                 </td>
                 <td>
-                    @Html.DisplayFor(modelItem => Model.Runtime)
+                    @Html.DisplayFor(modelItem => item.Runtime)
                 </td>
                 <td>
-                    @Html.DisplayFor(modelItem => Model.Plot)
+                    @Html.DisplayFor(modelItem => item.Plot)
                 </td>
                 <td>
-                    <img src="@Model.Poster" />
+                    <img src="@item.Poster" />
                 </td>
             </tr>
      }       
